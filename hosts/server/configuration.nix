@@ -7,7 +7,6 @@
     ../../nixos/users.nix
     ../../nixos/utils.nix
     ../../nixos/docker.nix
-    ../../nixos/tailscale.nix
 
     # NixOS server modules
     ../../server-modules/ssh.nix
