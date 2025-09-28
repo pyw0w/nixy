@@ -8,6 +8,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nix-gaming.url = "github:fufexan/nix-gaming";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
@@ -27,10 +28,28 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     eleakxir.url = "github:anotherhadi/eleakxir";
+    disko.url = "github:nix-community/disko";
+    zenix.url = "github:anders130/zenix";
   };
 
   outputs = inputs @ {nixpkgs, ...}: {
     nixosConfigurations = {
+      pc = 
+        nixpkgs.lib.nixosSystem {
+          modules = [
+            {
+              nixpkgs.overlays = [];
+              _module.args = {
+                inherit inputs;
+              };
+            }
+            inputs.home-manager.nixosModules.home-manager
+            inputs.stylix.nixosModules.stylix
+            inputs.disko.nixosModules.disko
+            ./hosts/desktop/disk-config.nix
+            ./hosts/desktop/configuration.nix
+          ];
+        };
       nixy =
         # CHANGEME: This should match the 'hostname' in your variables.nix file
         nixpkgs.lib.nixosSystem {

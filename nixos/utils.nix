@@ -51,7 +51,7 @@ in {
       resyncTimer = "10m";
     };
   };
-  console.keyMap = keyboardLayout;
+  console.keyMap = "us";
 
   environment.variables = {
     XDG_DATA_HOME = "$HOME/.local/share";
@@ -98,7 +98,6 @@ in {
     xdg-utils
     wget
     curl
-    vim
     go
     comma
   ];
