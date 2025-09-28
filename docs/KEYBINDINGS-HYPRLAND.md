@@ -8,8 +8,8 @@
 | -- | -- |
 | Switch Workspace | SUPER + {Number} |
 | Move app to Workspace | SHIFT + SUPER + {Number} |
-| Proton VPN | SUPER + V |
-| Proton Authenticator | SUPER + A |
+| $mod,V, exec,  uwsm app -- ${pkgs.protonvpn-gui}/bin/protonvpn-app"  |  |
+| $mod,A, exec,  uwsm app -- ${pkgs.proton-authenticator}/bin/proton-authenticator"  |  |
 | Lock | SUPER + L |
 | Powermenu | SUPER + X |
 | Launcher | SUPER + SPACE |
