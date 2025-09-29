@@ -24,7 +24,7 @@
         position = "top"; # "top" | "bottom"
         transparent = true;
         transparentButtons = false;
-        floating = true;
+        floating = false;
       };
     };
     description = "Theme configuration options";

@@ -1,7 +1,16 @@
-{ inputs, ... }: let
+{ pkgs, lib, inputs, ... }:
+
+let
   nixcordPkgs = inputs.nixcord.packages;
-in {
-  imports = [inputs.nixcord.homeModules.nixcord];
+in
+{
+  imports = [ inputs.nixcord.homeModules.nixcord ];
+
+  home.sessionVariables = {
+    XDG_SESSION_TYPE = "wayland";
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    XDG_RUNTIME_DIR = "/run/user/1000";
+  };
 
   programs.nixcord = {
     enable = true;

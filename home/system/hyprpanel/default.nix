@@ -1,5 +1,5 @@
 # Hyprpanel is the bar on top of the screen
-# Display information like workspaces, battery, wifi, ...
+# Display information like workspaces, ...
 {config, ...}: let
   transparentButtons = config.theme.bar.transparentButtons;
 
@@ -10,7 +10,8 @@
   foreground = "#${config.lib.stylix.colors.base05}";
   foregroundOnWallpaper = "#${config.theme.textColorOnWallpaper}";
   font = "${config.stylix.fonts.serif.name}";
-  fontSizeForHyprpanel = "${toString config.stylix.fonts.sizes.desktop}px";
+  # уменьшенный размер панели
+  fontSizeForHyprpanel = "16px";
 
   rounding = config.theme.rounding;
   border-size = config.theme.border-size;
@@ -44,8 +45,6 @@ in {
             "systray"
             "volume"
             "bluetooth"
-            "battery"
-            "network"
             "clock"
             "notifications"
           ];
@@ -58,12 +57,12 @@ in {
       theme.bar.outer_spacing =
         if floating && transparent
         then "0px"
-        else "8px";
+        else "4px";
       theme.bar.buttons.y_margins =
         if floating && transparent
         then "0px"
-        else "8px";
-      theme.bar.buttons.spacing = "0.3em";
+        else "4px";
+      theme.bar.buttons.spacing = "0.2em";
       theme.bar.buttons.radius =
         (
           if transparent
@@ -72,13 +71,13 @@ in {
         )
         + "px";
       theme.bar.floating = floating;
-      theme.bar.buttons.padding_x = "0.8rem";
-      theme.bar.buttons.padding_y = "0.4rem";
+      theme.bar.buttons.padding_x = "0.5rem";
+      theme.bar.buttons.padding_y = "0.2rem";
 
       theme.bar.margin_top =
         (
           if position == "top"
-          then toString (gaps-in * 2)
+          then toString (gaps-in)
           else "0"
         )
         + "px";
@@ -86,14 +85,14 @@ in {
         (
           if position == "top"
           then "0"
-          else toString (gaps-in * 2)
+          else toString (gaps-in)
         )
         + "px";
-      theme.bar.margin_sides = toString gaps-out + "px";
+      theme.bar.margin_sides = toString (gaps-out / 2) + "px";
       theme.bar.border_radius = toString rounding + "px";
       theme.bar.transparent = transparent;
       theme.bar.location = position;
-      theme.bar.dropdownGap = "4.5em";
+      theme.bar.dropdownGap = "2.5em";
       theme.bar.menus.shadow =
         if transparent
         then "0 0 0 0"
@@ -107,17 +106,18 @@ in {
       theme.bar.menus.menu.media.card.tint = 90;
 
       bar.launcher.icon = "";
-      bar.workspaces.show_numbered = false;
+      bar.workspaces.show_numbered = true;
       bar.workspaces.workspaces = 5;
       bar.workspaces.numbered_active_indicator = "color";
-      bar.workspaces.monitorSpecific = false;
+      bar.workspaces.monitorSpecific = true;
       bar.workspaces.applicationIconEmptyWorkspace = "";
-      bar.workspaces.showApplicationIcons = true;
-      bar.workspaces.showWsIcons = true;
+      bar.workspaces.showApplicationIcons = false;
+      bar.workspaces.showWsIcons = false;
 
       bar.windowtitle.label = true;
       bar.volume.label = false;
-      bar.network.truncation_size = 12;
+      # убран wifi
+      # bar.network.truncation_size = 12;
       bar.bluetooth.label = false;
       bar.clock.format = "%a %b %d  %I:%M %p";
       bar.notifications.show_total = true;
@@ -134,12 +134,8 @@ in {
       theme.notification.enableShadow = true;
       theme.notification.border_radius = toString rounding + "px";
 
-      theme.osd.enable = true;
-      theme.osd.orientation = "vertical";
-      theme.osd.location = "left";
-      theme.osd.radius = toString rounding + "px";
-      theme.osd.margins = "0px 0px 0px 10px";
-      theme.osd.muted_zero = true;
+      # убран контроль яркости
+      theme.osd.enable = false;
 
       menus.clock.weather.location = location;
       menus.clock.weather.unit = "metric";
@@ -185,7 +181,8 @@ in {
       menus.dashboard.directories.right.directory3.label = "󰉏     Pictures";
       menus.dashboard.directories.right.directory3.command = "xdg-open ${homeDir}/Pictures";
 
-      menus.power.lowBatteryNotification = true;
+      # убрана батарея
+      # menus.power.lowBatteryNotification = true;
 
       wallpaper.enable = false;
 
@@ -245,12 +242,13 @@ in {
       theme.bar.buttons.notifications.total = accent;
       theme.bar.buttons.notifications.icon = accent;
 
-      theme.osd.bar_color = accent;
-      theme.osd.bar_overflow_color = accent-alt;
-      theme.osd.icon = background;
-      theme.osd.icon_container = accent;
-      theme.osd.label = accent;
-      theme.osd.bar_container = background-alt;
+      # убран контроль яркости
+      # theme.osd.bar_color = accent;
+      # theme.osd.bar_overflow_color = accent-alt;
+      # theme.osd.icon = background;
+      # theme.osd.icon_container = accent;
+      # theme.osd.label = accent;
+      # theme.osd.bar_container = background-alt;
 
       theme.bar.menus.menu.media.background.color = background-alt;
       theme.bar.menus.menu.media.card.color = background-alt;
