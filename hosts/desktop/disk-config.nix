@@ -40,25 +40,6 @@
       };
     };
 
-    # NVMe-диск для данных (Ollama/Modules)
-    ollama = {
-      type = "disk";
-      device = "/dev/nvme1n1";
-      content = {
-        type = "gpt";
-        partitions = {
-          data = {
-            size = "100%";
-            content = {
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/data/docker";
-            };
-          };
-        };
-      };
-    };
-
     # Диск для игр
     games = {
       type = "disk";

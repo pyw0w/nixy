@@ -17,9 +17,8 @@ in {
       ExecStart = ''
         ${pkgs.steam-run}/bin/steam-run /opt/7d2d-server/7DaysToDieServer.x86_64 \
           -logfile /opt/7d2d-server/dedicated.log \
-          -configfile=serverconfig.xml \
-          -quit -batchmode -nographics \
-          -heapsize 16777216
+          -configfile=/opt/7d2d-server/serverconfig.xml \
+          -quit -batchmode -nographics
       '';
 
       Restart = "on-failure";
@@ -27,10 +26,15 @@ in {
 
       StandardOutput = "journal";
       StandardError = "journal";
+
+      LimitNOFILE = 524288;
+      LimitAS = "infinity";
+      LimitRSS = "infinity";
     };
 
-    path = with pkgs; [ steam-run mono glibc zlib xorg.libX11 ];
+    path = with pkgs; [ steam-run glibc zlib xorg.libX11 ];
   };
+
 
   systemd.tmpfiles.rules = [
     "d /opt/7d2d-server 0755 ${username} users -"
