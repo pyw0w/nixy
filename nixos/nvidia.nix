@@ -5,21 +5,35 @@
   config,
   ...
 }: let
-  # Using beta driver for recent GPUs like RTX 4070
-  nvidiaDriverChannel = config.boot.kernelPackages.nvidiaPackages.beta;
+  # Using beta driver for recent GPUs like RTX 3060
+  nvidiaDriverChannel = config.boot.kernelPackages.nvidiaPackages.stable;
 in {
   # Video drivers configuration for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"]; # Simplified - other modules are loaded automatically
 
   # Kernel parameters for better Wayland and Hyprland integration
   boot.kernelParams = [
-    "nvidia-drm.modeset=1" # Enable mode setting for Wayland
-    "nvidia.NVreg_PreserveVideoMemoryAllocations=1" # Improves resume after sleep
-    "nvidia.NVreg_RegistryDwords=PowerMizerEnable=0x1;PerfLevelSrc=0x2222;PowerMizerLevel=0x3;PowerMizerDefault=0x3;PowerMizerDefaultAC=0x3" # Performance/power optimizations
+    "nvidia-drm.modeset=1"
+    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+    "nvidia.NVreg_RegistryDwords=PowerMizerEnable=0x1;PerfLevelSrc=0x2222;PowerMizerLevel=0x3;PowerMizerDefault=0x3;PowerMizerDefaultAC=0x3"
+    "intel_iommu=on"
+    "iommu=pt"
+    "vfio-pci.ids=1002:68d9"
   ];
 
+
   # Blacklist nouveau to avoid conflicts
-  boot.blacklistedKernelModules = ["nouveau"];
+  boot.blacklistedKernelModules = [
+    "nouveau"
+    "radeon"
+    "amdgpu"
+  ];
+
+  boot.initrd.kernelModules = [
+    "vfio"
+    "vfio_pci"
+    "vfio_iommu_type1"
+  ];
 
   # Environment variables for better compatibility
   environment.variables = {
@@ -102,5 +116,9 @@ in {
     glxinfo
     libva-utils # VA-API debugging tools
     cudatoolkit
+
+    qemu_kvm
+    virt-manager
+    spice-vdagent
   ];
 }

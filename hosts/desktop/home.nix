@@ -19,7 +19,7 @@
     ../../home/programs/lazygit
     ../../home/programs/discord
     ../../home/programs/zenbrowser
-    ../../home/programs/obs
+    #../../home/programs/obs
 
     # Scripts
     ../../home/scripts # All scripts
