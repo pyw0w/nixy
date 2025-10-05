@@ -19,6 +19,7 @@
     ../../home/programs/lazygit
     ../../home/programs/discord
     ../../home/programs/zenbrowser
+    ../../home/programs/virtual
     #../../home/programs/obs
 
     # Scripts
@@ -97,6 +98,7 @@
 
       # Games
       steam
+      gamescope
       osu-lazer
       (prismlauncher.override { jdks = [ zulu21 zulu17 zulu11 zulu8 ]; }) 
     ];

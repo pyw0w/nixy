@@ -116,9 +116,5 @@ in {
     glxinfo
     libva-utils # VA-API debugging tools
     cudatoolkit
-
-    qemu_kvm
-    virt-manager
-    spice-vdagent
   ];
 }
