@@ -20,6 +20,7 @@
     ../../home/programs/discord
     ../../home/programs/zenbrowser
     ../../home/programs/virtual
+    ../../home/programs/qbittorrent
     #../../home/programs/obs
 
     # Scripts

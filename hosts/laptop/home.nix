@@ -18,6 +18,7 @@
     ../../home/programs/thunar
     ../../home/programs/lazygit
     ../../home/programs/discord
+    ../../home/programs/qbittorrent
 
     # Scripts
     ../../home/scripts # All scripts
