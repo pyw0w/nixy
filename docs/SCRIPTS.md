@@ -90,3 +90,5 @@ Usefull quick scripts
 - `lock` - Lock the screen. (hyprlock)
 - `powermode-toggle` - Toggle between performance and balanced power mode. (powerprofilesctl)
 
+
+
