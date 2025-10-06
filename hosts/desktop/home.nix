@@ -21,7 +21,8 @@
     ../../home/programs/zenbrowser
     ../../home/programs/virtual
     ../../home/programs/qbittorrent
-    #../../home/programs/obs
+    #../../home/programs/iso-tools
+    ../../home/programs/obs
 
     # Scripts
     ../../home/scripts # All scripts

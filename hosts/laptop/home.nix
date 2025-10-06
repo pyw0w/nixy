@@ -19,6 +19,7 @@
     ../../home/programs/lazygit
     ../../home/programs/discord
     ../../home/programs/qbittorrent
+    ../../home/programs/iso-tools
 
     # Scripts
     ../../home/scripts # All scripts

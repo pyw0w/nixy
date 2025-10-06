@@ -38,7 +38,7 @@ in {
     settings = {
 
       bar.layouts = {
-        "*" = {
+        "DP-1" = {
           left = [ "dashboard" "workspaces" "windowtitle" ];
           middle = [ "media" "cava" ];
           right = [
@@ -50,6 +50,9 @@ in {
           ];
         };
       };
+
+      # Явно указываем, что панель должна отображаться только на DP-1
+      bar.monitor = "DP-1";
 
       theme.font.name = font;
       theme.font.size = fontSizeForHyprpanel;
